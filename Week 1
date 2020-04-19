@@ -1,0 +1,48 @@
+#Q1 - Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+import copy
+
+class Solution(object):
+    def singleNumber(self, nums):
+        a = {}
+        for i in nums:
+            if i in a:
+                a[i] += 1
+            else:
+                a[i] = 1
+        for i,j in a.items():
+            if j==1:
+                return i
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+#Q2 - 
+"""Write an algorithm to determine if a number n is "happy".
+
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+
+Return True if n is a happy number, and False if not."""
+
+class Solution(object):
+    def isHappy(self, n):
+        sum = n
+        ls = []
+        while(1):
+            n = sum
+            sum = 0
+            ls.append(n)
+            for i in str(n):
+                sum += int(i)**2
+            if sum == 1:
+                return True
+            elif sum in ls:
+                return False
+            
+        """
+        :type n: int
+        :rtype: bool
+        """
+        
+
+        
