@@ -43,6 +43,45 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        
+    
+#Q3 - Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
+class Solution(object):
+    def maxSubArray(self, nums):
+        largest = nums[0]
+        so = 0
+        i=0
+        for i in nums:
+            so += i
+            if largest < so:
+                largest = so
+            if so<0:
+                so=0
+        return largest
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+ #Q4 - 
+ 
+'''Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+1) You must do this in-place without making a copy of the array.
+2) Minimize the total number of operations.'''
+
+class Solution(object):
+    def moveZeroes(self, nums):
+        n = len(nums)
+        for i in range(n):
+            if nums[i] != 0:
+                nums.append(nums[i])
+        nums += [0]*(2*n-len(nums))
+        nums[:] = nums[n:]
+        return None
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        
         
