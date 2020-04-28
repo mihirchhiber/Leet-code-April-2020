@@ -1,0 +1,82 @@
+#Q1
+'''Given a non-empty, singly linked list with head node head, return a middle node of linked list.
+
+If there are two middle nodes, return the second middle node.'''
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def middleNode(self, head):
+        counter = 1
+        temp = head
+        while temp.next != None:
+            counter +=1
+            temp = temp.next
+        i=0
+        temp=head
+        while i<counter//2:
+            temp=temp.next
+            i += 1
+        return temp
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        
+#Q3
+'''Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.'''
+
+class MinStack(object):
+
+    def __init__(self):
+        self.ls=[]
+        
+        
+
+    def push(self, x):
+        self.ls.append(x)
+        """
+        :type x: int
+        :rtype: None
+        """
+        
+
+    def pop(self):
+        #if len(self.ls)>0:
+        #self.ls.pop(len(self.ls)-1)
+        self.ls[:]=self.ls[:-1]
+        """
+        :rtype: None
+        """
+        
+
+    def top(self):
+        return self.ls[-1]
+        """
+        :rtype: int
+        """
+        
+
+    def getMin(self):
+        return min(self.ls)
+        """
+        :rtype: int
+        """
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
