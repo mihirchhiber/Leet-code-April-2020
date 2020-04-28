@@ -83,5 +83,64 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
+       
+#Q5
+'''Say you have an array prices for which the ith element is the price of a given stock on day i.
+
+Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+
+Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).'''
+
+class Solution(object):
+    def maxProfit(self, prices):
+        i = 0
+        low = prices[0]
+        pro = 0
+        if len(prices)==1:
+            return 0
+        while i < len(prices):
+            while prices[i] <= prices[i+1] and i+2<len(prices):
+                i+=1
+            if i+2 == len(prices):
+                if prices[i] < prices[i+1]:
+                    pro +=  prices[i+1] - low
+                else:
+                    pro += prices[i] - low
+                i+=3
+            else:
+                pro += prices[i] - low
+                i+=1
+                low = prices[i]        
         
+        return pro
+                
+                
+                    
+                        
+                        
+                        
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        
+#Q7 
+'''Given an integer array arr, count element x such that x + 1 is also in arr.
+
+If there're duplicates in arr, count them seperately.'''
+
+class Solution(object):
+    def countElements(self, arr):
+        dc= {}
+        for i in set(arr):
+            dc[i] = 0
+        for i in arr:    
+            if i+1 in arr:
+                dc[i] += 1
+        return sum(dc.values())
+            
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
         
